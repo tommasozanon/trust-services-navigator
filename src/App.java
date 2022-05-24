@@ -13,10 +13,11 @@ import org.json.JSONObject;
 public class App extends Application {
 
     public static void main(String[] args) throws IOException {
-        // launch();
 
         SiteRequests sr = SiteRequests.getInstance();
-        System.out.println(sr.country_list());
+        System.out.println(sr.trust_services_providers_json());
+
+        launch();
 
     }
 
