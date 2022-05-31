@@ -13,6 +13,6 @@
             <Font size="37.0" />
          </font>
       </Label>
-      <Button fx:id="button" layoutX="392.0" layoutY="400.0" mnemonicParsing="false" onAction="#changeTitle" text="Bottone" />
+      <Button fx:id="button" layoutX="392.0" layoutY="400.0" mnemonicParsing="false" onAction="#switchScene2" text="Bottone" />
    </children>
 </Pane>

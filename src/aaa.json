@@ -2415,7 +2415,7 @@
 			},
 			{
 				"tspId": 4,
-				"currentStatus": "http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted",
+				"currentStatus": "http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/withdrawn",
 				"countryCode": "BG",
 				"tob": null,
 				"qServiceTypes": ["QTimestamp"],
@@ -2432,6 +2432,16 @@
 				"serviceId": 6,
 				"serviceName": "StampIT Global OCSP",
 				"type": "http://uri.etsi.org/TrstSvc/Svctype/Certstatus/OCSP/QC"
+			},
+			{
+				"tspId": 4,
+				"currentStatus": "http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted",
+				"countryCode": "BG",
+				"tob": null,
+				"qServiceTypes": ["QTimestamp"],
+				"serviceId": 7,
+				"serviceName": "StampIT Global TSA",
+				"type": "http://uri.etsi.org/TrstSvc/Svctype/TSA/QTST"
 			}
 		]
 	},
@@ -30668,7 +30678,7 @@
 			},
 			{
 				"tspId": 1,
-				"currentStatus": "http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted",
+				"currentStatus": "http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/withdrawn",
 				"countryCode": "LV",
 				"tob": null,
 				"qServiceTypes": ["QCertESig"],

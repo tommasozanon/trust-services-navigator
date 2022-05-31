@@ -3,6 +3,7 @@ import java.net.URL;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Vector;
 
 import java.io.FileWriter;
 
@@ -11,7 +12,7 @@ import org.json.JSONArray;
 
 public class SiteRequests {
     private JSONObject country_list;
-    private JSONArray trust_services_providers_list;
+    private JSONArray all_infos;
     private static SiteRequests single_instance = null;
 
     /**
@@ -19,7 +20,7 @@ public class SiteRequests {
      */
     private SiteRequests() {
         country_list = new JSONObject();
-        trust_services_providers_list = new JSONArray();
+        all_infos = new JSONArray();
     };
 
     /**
@@ -39,7 +40,7 @@ public class SiteRequests {
      * 
      * @return List of all countries
      */
-    public JSONObject country_json() throws IOException {
+    public JSONObject get_country_json() throws IOException {
         if (country_list.isEmpty()) {
             URL url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/countries_list");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -87,8 +88,8 @@ public class SiteRequests {
      * 
      * @return
      */
-    public JSONArray trust_services_providers_json() throws IOException {
-        if (trust_services_providers_list.isEmpty()) {
+    private void trust_services_providers_json() throws IOException {
+        if (all_infos.isEmpty()) {
             URL url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/tsp_list");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -109,7 +110,8 @@ public class SiteRequests {
                 in.close();
 
             } else {
-                return new JSONArray("{ \"error\" : \"BAD_CODE: " + responseCode);
+                // todo gestione delle eccezioni
+                System.out.println("errore");
             }
 
             JSONArray array = new JSONArray(response.toString());
@@ -124,19 +126,45 @@ public class SiteRequests {
             // s += "}";
 
             // JSONObject jsonObject = new JSONObject(s);
-            try {
-                FileWriter myWriter = new FileWriter("src/aaa.json");
-                myWriter.write(array.toString());
-                myWriter.close();
-                System.out.println("Successfully wrote to the file.");
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
+            // try {
+            // FileWriter myWriter = new FileWriter("src/aaa.json");
+            // myWriter.write(array.toString());
+            // myWriter.close();
+            // System.out.println("Successfully wrote to the file.");
+            // } catch (IOException e) {
+            // System.out.println("An error occurred.");
+            // e.printStackTrace();
+            // }
 
-            trust_services_providers_list = array;
+            all_infos = array;
+        }
+    }
+
+    /**
+     * 
+     * @return list of all trust_services types
+     * @throws IOException
+     */
+    public Vector<String> get_trust_service_type() throws IOException {
+        if (all_infos.isEmpty()) {
+            trust_services_providers_json();
         }
 
-        return trust_services_providers_list;
+        Vector<String> service_types = new Vector<String>() {
+        };
+        for (int i = 0; i < all_infos.length(); i++) {
+            JSONObject country = all_infos.getJSONObject(i);
+            // metodo brutto ma non mi viene in mente altro
+            String array = country.get("qServiceTypes").toString();
+            array = array.replace("[", "").replace("]", "").replace("\"", "");
+            String[] temp = array.split(",");
+            for (int j = 0; j < temp.length; j++) {
+                if (!(service_types.contains(temp[j]))) {
+                    service_types.add(temp[j]);
+                }
+            }
+
+        }
+        return service_types;
     }
 }

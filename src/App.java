@@ -8,15 +8,12 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-import org.json.JSONObject;
-
 public class App extends Application {
 
     public static void main(String[] args) throws IOException {
 
-        SiteRequests sr = SiteRequests.getInstance();
-        System.out.println(sr.trust_services_providers_json());
-
+        // SiteRequests sr = SiteRequests.getInstance();
+        // System.out.println(sr.get_trust_service_type());
         launch();
 
     }
