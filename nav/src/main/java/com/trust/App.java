@@ -1,3 +1,5 @@
+package com.trust;
+
 import javafx.application.Application;
 
 import javafx.scene.Scene;

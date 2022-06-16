@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane fx:controller="Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="com.trust.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="264.0" layoutY="108.0" text="prova 2" />
       <Button fx:id="button2" layoutX="236.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchScene1" prefHeight="60.0" prefWidth="128.0" text="Button" />
