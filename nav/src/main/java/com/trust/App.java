@@ -1,3 +1,5 @@
+package com.trust;
+
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -8,15 +10,13 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-import org.json.JSONObject;
-
 public class App extends Application {
 
     public static void main(String[] args) throws IOException {
-        // launch();
 
-        SiteRequests sr = SiteRequests.getInstance();
-        System.out.println(sr.country_list());
+        // SiteRequests sr = SiteRequests.getInstance();
+        // System.out.println(sr.get_trust_service_type());
+        launch();
 
     }
 
